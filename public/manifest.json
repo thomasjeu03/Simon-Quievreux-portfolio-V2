@@ -1,5 +1,5 @@
 {
-    "background_color": "#F9F8F9 ",
+    "background_color": "#f9f8f9 ",
     "categories": [
         "Simon Quievreux", "Grafic designer", "photoshop", "portoflio", "gaming", "poster", "French"
     ],
@@ -21,7 +21,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#005FDB",
+    "theme_color": "#f9f8f9",
     "orientation": "any",
     "display_override": [
         "fullscreen",

@@ -15,6 +15,11 @@ function HomePage() {
             <br/>
             <br/>
             <h1>Simon Quievreux</h1>
+            <a target='_blank'
+               rel='noopener'
+               href="https://twitter.com/Sq_Visuals">
+                My X account
+            </a>
         </div>
     )
 }
