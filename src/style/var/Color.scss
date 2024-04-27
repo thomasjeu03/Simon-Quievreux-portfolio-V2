@@ -41,19 +41,19 @@
   --gray-500-lighter: rgb(var(--gray-500-rgb), var(--lighter));
 
   /*Black color*/
-  --black-rgb: 0,0,0;
+  --black-rgb: 14,14,18;
   --black: rgb(var(--black-rgb));
   --black-light: rgb(var(--black-rgb), var(--light));
   --black-lighter: rgb(var(--black-rgb), var(--lighter));
 
   /*Primary color*/
-  --primary-rgb: 243,103,118;
+  --primary-rgb: 0,95,209;
   --primary: rgb(var(--primary-rgb));
   --primary-light: rgb(var(--primary-rgb), var(--light));
   --primary-lighter: rgb(var(--primary-rgb), var(--lighter));
 
   /*Secondary color*/
-  --secondary-rgb: 187,107,252;
+  --secondary-rgb: 233,24,137;
   --secondary: rgb(var(--secondary-rgb));
   --secondary-light: rgb(var(--secondary-rgb), var(--light));
   --secondary-lighter: rgb(var(--secondary-rgb), var(--lighter));
@@ -105,33 +105,24 @@
   stroke: var(--black);
 }
 
-.primary, .pink{
+.primary, .blue{
   color: var(--primary);
   stroke: var(--primary);
 }
+.secondary, .pink{
+  color: var(--secondary);
+  stroke: var(--secondary);
+}
+
 .danger, .red{
   color: var(--danger);
   stroke: var(--danger);
 }
-.success, .green{
-  color: var(--success);
-  stroke: var(--success);
-}
-.success-light, .green-light{
-  color: var(--success-light);
-  stroke: var(--success-light);
-}
-.success-lighter, .green-lighter{
-  color: var(--success-lighter);
-  stroke: var(--success-lighter);
-}
-
-.orange {
+.warning, .orange {
   color: var(--orange);
   stroke: var(--orange);
 }
-
-.secondary, .purple{
-  color: var(--secondary);
-  stroke: var(--secondary);
+.success, .green{
+  color: var(--success);
+  stroke: var(--success);
 }
