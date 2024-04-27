@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'Rebond Grotesque';
+  src: url('../fonts/Rebond-Grotesque.otf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('../fonts/NeueMontreal-Regular.otf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Editorial New';
+  src: url('../fonts/PPEditorialNew-UltralightItalic.otf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --title-font: 'Rebond Grotesque', sans-serif;
+  --text-font: 'Neue Montreal' , sans-serif;
+  --serif-font: 'Editorial New' , serif;
+  --font-size: 16px;
+  @media only screen and (max-width: 900px){
+    --font-size: 14px;
+  }
+}
+
+.title-font{
+  font-family: var(--title-font) !important;
+}
+.text-font{
+  font-family: var(--text-font) !important;
+}
+.serif-font, .editorial-new{
+  font-family: var(--serif-font) !important;
+  letter-spacing: 1px;
+}
+.titre1, h1{
+  font-size: var(--10m);
+  line-height: normal;
+  font-weight: 500;
+  font-family: var(--serif-font);
+}
+
+.titre2, h2{
+  font-size: var(--7m);
+  line-height: normal;
+  font-weight: 500;
+  font-family: var(--serif-font);
+}
+.titre3, h3{
+  font-size: var(--5m);
+  line-height: normal;
+  font-weight: 500;
+  font-family: var(--serif-font);
+}
+.titre4, h4{
+  font-size: var(--4m);
+  line-height: normal;
+  font-weight: 500;
+  font-family: var(--title-font);
+}
+.titre5, h5{
+  font-size: 26px;
+  line-height: normal;
+  font-weight: 500;
+  font-family: var(--title-font);
+}
+.titre6, h6{
+  font-size: 22px;
+  line-height: normal;
+  font-weight: 500;
+  font-family: var(--title-font);
+}
+@media only screen and (max-width: 900px){
+  .titre1, h1{
+    font-size: var(--7m);
+  }
+  .titre2, h2{
+    font-size: var(--5m);
+  }
+  .titre3, h3{
+    font-size: var(--4m);
+  }
+  .titre4, h4{
+    font-size: 26px;
+  }
+  .titre5, h5{
+    font-size: 24px;
+  }
+  .titre6, h6{
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 600px){
+  .titre1, h1{
+    font-size: var(--5m);
+  }
+  .titre2, h2{
+    font-size: var(--4m);
+  }
+  .titre3, h3{
+    font-size: 26px;
+  }
+  .titre4, h4{
+    font-size: 24px;
+  }
+  .titre5, h5{
+    font-size: 20px;
+  }
+  .titre6, h6{
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 400px){
+  .titre1, h1{
+    font-size: var(--4m);
+  }
+  .titre2, h2{
+    font-size: 26px;
+  }
+  .titre3, h3{
+    font-size: 24px;
+  }
+  .titre4, h4{
+    font-size: 20px;
+  }
+  .titre5, h5{
+    font-size: 18px;
+  }
+  .titre6, h6{
+    font-size: 16px;
+  }
+}
+
+@for $size from 1 through 80 {
+  .regular#{$size}{
+    font-size: ($size+px);
+    line-height: normal;
+    font-family: var(--text-font);
+    @media only screen and (max-width: 1100px){
+      font-size: (calc($size/1.25)+px);
+    }
+    @media only screen and (max-width: 900px){
+      font-size: (calc($size/1.5)+px);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+:root{
+  /*Spacing*/
+  --05m: calc(var(--1m) / 2);
+  --1m: 8px;
+  --2m: calc(2 * var(--1m));
+  --3m: calc(3 * var(--1m));
+  --4m: calc(4 * var(--1m));
+  --5m: calc(5 * var(--1m));
+  --6m: calc(6 * var(--1m));
+  --7m: calc(7 * var(--1m));
+  --8m: calc(8 * var(--1m));
+  --9m: calc(9 * var(--1m));
+  --10m: calc(2 * var(--5m));
+  --12m: calc(2 * var(--6m));
+  --14m: calc(2 * var(--7m));
+  --16m: calc(2 * var(--8m));
+  --18m: calc(2 * var(--9m));
+  --20m: calc(2 * var(--10m));
+}

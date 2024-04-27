@@ -1,0 +1,8 @@
+@mixin lineClamp($nbline){
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $nbline;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,32 @@
+{
+    "background_color": "#F9F8F9 ",
+    "categories": [
+        "Simon Quievreux", "Grafic designer", "photoshop", "portoflio", "gaming", "poster", "French"
+    ],
+    "id": "/?source=pwa",
+    "start_url": "/?source=pwa",
+    "description": "Hello, I’m Simon, a graphic designer based in france specialised in e-sport graphic design",
+    "scope": "./",
+    "name": "Simon Quievreux",
+    "short_name": "Simon Quievreux",
+    "icons": [
+        {
+            "src": "/img/icon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/icon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#005FDB",
+    "orientation": "any",
+    "display_override": [
+        "fullscreen",
+        "minimal-ui",
+        "window-controls-overlay"
+    ],
+    "display": "standalone"
+}
