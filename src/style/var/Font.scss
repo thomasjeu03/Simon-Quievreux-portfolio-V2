@@ -40,13 +40,21 @@
 .text-font{
   font-family: var(--text-font) !important;
 }
+.gradientTitre{
+  font-size: 86px;
+  line-height: 76px;
+  font-weight: 500;
+  font-family: var(--title-font-heavy);
+  background: -webkit-linear-gradient(0deg,var(--primary), var(--black));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .titre1, h1{
   font-size: var(--7m);
   line-height: var(--6m);
   font-weight: 500;
   font-family: var(--title-font-heavy);
 }
-
 .titre2, h2{
   font-size: var(--6m);
   line-height: normal;
@@ -71,13 +79,17 @@
   font-weight: 500;
   font-family: var(--title-font);
 }
-.titre6, h6{
+.titre6, h6, .CTA{
   font-size: 22px;
   line-height: normal;
   font-weight: 500;
   font-family: var(--title-font);
 }
 @media only screen and (max-width: 900px){
+  .gradientTitre{
+    font-size: 78px;
+    line-height: 68px;
+  }
   .titre1, h1{
     font-size: var(--6m);
   }
@@ -93,11 +105,15 @@
   .titre5, h5{
     font-size: 24px;
   }
-  .titre6, h6{
+  .titre6, h6, .CTA{
     font-size: 20px;
   }
 }
 @media only screen and (max-width: 600px){
+  .gradientTitre{
+    font-size: 70px;
+    line-height: 60px;
+  }
   .titre1, h1{
     font-size: var(--5m);
   }
@@ -113,11 +129,15 @@
   .titre5, h5{
     font-size: 20px;
   }
-  .titre6, h6{
+  .titre6, h6, .CTA{
     font-size: 18px;
   }
 }
 @media only screen and (max-width: 400px){
+  .gradientTitre{
+    font-size: 62px;
+    line-height: 52px;
+  }
   .titre1, h1{
     font-size: var(--4m);
   }
@@ -133,7 +153,7 @@
   .titre5, h5{
     font-size: 18px;
   }
-  .titre6, h6{
+  .titre6, h6, .CTA{
     font-size: 16px;
   }
 }

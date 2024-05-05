@@ -8,4 +8,16 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    position: relative;
+    min-height: 100dvh;
+    .backgroundImage{
+        pointer-events: none;
+        z-index: -10;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100vw;
+        height: 100dvh;
+    }
 }

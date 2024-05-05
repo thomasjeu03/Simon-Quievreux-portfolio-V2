@@ -47,7 +47,7 @@
   --black-lighter: rgb(var(--black-rgb), var(--lighter));
 
   /*Primary color*/
-  --primary-rgb: 0,95,209;
+  --primary-rgb: 0,95,219;
   --primary: rgb(var(--primary-rgb));
   --primary-light: rgb(var(--primary-rgb), var(--light));
   --primary-lighter: rgb(var(--primary-rgb), var(--lighter));
@@ -75,6 +75,68 @@
   --orange: rgb(var(--orange-rgb));
   --orange-light: rgb(var(--orange-rgb), var(--light));
   --orange-lighter: rgb(var(--orange-rgb), var(--lighter));
+}
+.darkMode{
+  /*White color*/
+  --white-rgb: 14,14,18;
+  --white: rgb(var(--white-rgb));
+  --white-light: rgb(var(--white-rgb), var(--light));
+  --white-lighter: rgb(var(--white-rgb), var(--lighter));
+
+  /*gray 100*/
+  --gray-100-rgb: 60, 60, 65;
+  --gray-100: rgb(var(--gray-100-rgb));
+  --gray-100-light: rgb(var(--gray-100-rgb), var(--light));
+  --gray-100-lighter: rgb(var(--gray-100-rgb), var(--lighter));
+
+  /*Gray 200 color*/
+  --gray-200-rgb: 105, 105, 108;
+  --gray-200: rgb(var(--gray-200-rgb));
+  --gray-200-light: rgb(var(--gray-200-rgb), var(--light));
+  --gray-200-lighter: rgb(var(--gray-200-rgb), var(--lighter));
+
+  /*Gray 300 color*/
+  --gray-300-rgb: 142, 142, 145;
+  --gray-300: rgb(var(--gray-300-rgb));
+  --gray-300-light: rgb(var(--gray-300-rgb), var(--light));
+  --gray-300-lighter: rgb(var(--gray-300-rgb), var(--lighter));
+
+  /*Gray 400 color*/
+  --gray-400-rgb: 176, 175, 178;
+  --gray-400: rgb(var(--gray-400-rgb));
+  --gray-400-light: rgb(var(--gray-400-rgb), var(--light));
+  --gray-400-lighter: rgb(var(--gray-400-rgb), var(--lighter));
+
+  /*Gray 500 color*/
+  --gray-500-rgb: 214, 213, 214;
+  --gray-500: rgb(var(--gray-500-rgb));
+  --gray-500-light: rgb(var(--gray-500-rgb), var(--light));
+  --gray-500-lighter: rgb(var(--gray-500-rgb), var(--lighter));
+
+  /*Black color*/
+  --black-rgb: 249, 248, 249;
+  --black: rgb(var(--black-rgb));
+  --black-light: rgb(var(--black-rgb), var(--light));
+  --black-lighter: rgb(var(--black-rgb), var(--lighter));
+  .CTA{
+    color: var(--black) !important;
+    stroke: var(--black) !important;
+    p,svg{
+      color: var(--black) !important;
+      stroke: var(--black) !important;
+    }
+    &:hover{
+      color: var(--white) !important;
+      stroke: var(--white) !important;
+      p,svg{
+        color: var(--white) !important;
+        stroke: var(--white) !important;
+      }
+    }
+  }
+  .invertInDarkMode{
+    filter: invert(1);
+  }
 }
 .white{
   color: var(--white);

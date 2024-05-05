@@ -1,10 +1,9 @@
 .CTA{
-  padding: 7px 20px 8px 20px;
-  font-size: 18px;
-  text-align: center;
-  font-family: var(--title-font);
+  --mainColor: var(--primary);
+  --hoverColor: var(--black);
+  padding: 8px 12px 8px 8px;
+  text-align: left;
   display: flex;
-  font-weight: 500;
   flex-direction: row;
   white-space: nowrap;
   align-items: center;
@@ -12,31 +11,45 @@
   gap: var(--1m);
   text-decoration: none;
   color: var(--white);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  margin-left: var(--2m);
   outline: none;
-  background: linear-gradient(45deg, var(--secondary), var(--primary));
-  border: 1px solid var(--white-light);
+  background: var(--mainColor);
   transition: .5s var(--smoothanimation);
-  &:hover{
-    color: var(--white);
+  position: relative;
+  svg{
     transition: .5s var(--smoothanimation);
-    background: linear-gradient(45deg, var(--secondary) 30%, var(--primary) 130%);
+  }
+  &:before{
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    content: '';
+    background: none;
+    height: -webkit-fill-available;
+    border: 2px solid var(--mainColor);
+    width: var(--2m);
+    transition: .5s var(--smoothanimation);
+  }
+  &:hover{
+    transition: .5s var(--smoothanimation);
+    color: var(--white);
+    background: var(--hoverColor);
+    svg{
+      transition: .5s var(--smoothanimation);
+    }
+    &:before{
+      transition: .5s var(--smoothanimation);
+      border: 2px solid var(--hoverColor);
+    }
+  }
+  &--pink{
+    --mainColor: var(--secondary);
+    --hoverColor: var(--black);
   }
   @media only screen and (max-width: 900px){
-    padding: 5px 12px 6px 12px;
-    font-size: 16px;
+    padding: 5px 8px 5px 5px;
     gap: var(--05m);
-  }
-  &--gray{
-    color: var(--black);
-    background: var(--white-light);
-    border: 1px solid var(--gray-100);
-    &:hover{
-      color: var(--white);
-      transition: .5s var(--smoothanimation);
-      background: var(--white-lighter);
-    }
   }
 }
 .gradient-blur {

@@ -21,6 +21,20 @@
 ::-webkit-scrollbar-thumb{
   background: var(--gray-300);
 }
+.noise{
+  background-image: url(./public/img/noise.png);
+  background-repeat: repeat;
+  position: fixed;
+  z-index: 5000;
+  opacity: .66;
+  width: 300vw;
+  height: 300vh;
+  left: -100%;
+  top: -100%;
+  pointer-events: none;
+  will-change: transform;
+  animation: 6s steps(10) 0s infinite normal none running noise_grain__3Y1xm;
+}
 html{
   font-family: var(--text-font);
   font-size: var(--font-size);
