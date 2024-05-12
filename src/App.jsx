@@ -1,7 +1,7 @@
 import './style/App.scss'
 import {Routes, Route} from "react-router-dom"
 import backgroundImage from "./../public/img/homeBg.png"
-import HomePage from "./pages/home/Home.jsx"
+import TemplatePage from "./pages/TemplatePage.jsx"
 import {useEffect} from "react";
 import {useDarkModeContext} from "./providers/DarkModeProvider.jsx";
 
@@ -34,7 +34,8 @@ function App() {
                 <img src={backgroundImage} alt="backgroundImage"/>
             </figure>
             <Routes>
-                <Route exact path='/' element={<HomePage/>}/>
+                <Route exact path='/' element={<TemplatePage/>}/>
+                <Route path='/:slug' element={<TemplatePage />} />
             </Routes>
         </div>
     )

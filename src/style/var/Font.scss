@@ -49,6 +49,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.gradientTitreGray{
+  background: -webkit-linear-gradient(0deg,var(--black), var(--gray-300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .titre1, h1{
   font-size: var(--7m);
   line-height: var(--6m);

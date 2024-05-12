@@ -30,3 +30,200 @@
     padding: var(--4m);
   }
 }
+.cornerBorder{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+  padding: var(--2m);
+  .top, .bottom{
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    transition: .5s var(--smoothanimation);
+    &::before, &::after{
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      transition: .5s var(--smoothanimation);
+      aspect-ratio: 1 !important;
+      z-index: 0;
+    }
+    &::before{
+      top: 0;
+      left: 0;
+      transition: .5s var(--smoothanimation);
+      border-left: 1px solid var(--gray-200);
+      border-top: 1px solid var(--gray-200);
+    }
+    &::after{
+      top: 0;
+      right: 0;
+      transition: .5s var(--smoothanimation);
+      border-right: 1px solid var(--gray-200);
+      border-top: 1px solid var(--gray-200);
+    }
+  }
+  .bottom{
+    bottom: 0;
+    top: auto;
+    &::before{
+      bottom: 0;
+      border-top: none;
+      transition: .5s var(--smoothanimation);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    &::after{
+      bottom: 0;
+      border-top: none;
+      transition: .5s var(--smoothanimation);
+      border-bottom: 1px solid var(--gray-200);
+    }
+  }
+  &:hover{
+    .top, .bottom{
+      height: 80px;
+      transition: .5s var(--smoothanimation);
+      &::before, &::after{
+        transition: .5s var(--smoothanimation);
+        width: 80px;
+        height: 80px;
+      }
+      &::before{
+        transition: .5s var(--smoothanimation);
+        border-left: 2px solid var(--primary);
+        border-top: 2px solid var(--primary);
+      }
+      &::after{
+        transition: .5s var(--smoothanimation);
+        border-right: 2px solid var(--primary);
+        border-top: 2px solid var(--primary);
+      }
+    }
+    .bottom{
+      &::before{
+        border-top: none;
+        transition: .5s var(--smoothanimation);
+        border-bottom: 2px solid var(--primary);
+      }
+      &::after{
+        border-top: none;
+        transition: .5s var(--smoothanimation);
+        border-bottom: 2px solid var(--primary);
+      }
+    }
+    .cardProject{
+      img{
+        transform: scale(1.07) !important;
+        transition: .5s var(--smoothanimation);
+      }
+      .cardProject--right{
+        .backgroundCardImage{
+          opacity: .30;
+          transition: .5s var(--smoothanimation);
+        }
+      }
+    }
+    .firstBorder{
+      border-color: var(--gray-400);
+      transition: .5s var(--smoothanimation);
+    }
+  }
+}
+.firstBorder{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--gray-200);
+  padding: var(--2m);
+  transition: .5s var(--smoothanimation);
+  &:hover{
+    border-color: var(--gray-400);
+    transition: .5s var(--smoothanimation);
+  }
+}
+.cardProject{
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  img{
+    transition: .5s var(--smoothanimation);
+  }
+  &--left{
+    aspect-ratio: 28/35;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+  }
+  &--right{
+    height: 100%;
+    width: 60%;
+    gap: var(--2m);
+    padding: var(--3m) var(--4m);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    .backgroundCardImage{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: .15;
+      transition: .5s var(--smoothanimation);
+      &:after{
+        content: '';
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: rgba(255,255,255,.01);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    }
+  }
+  &:hover{
+    img{
+      transform: scale(1.07) !important;
+      transition: .5s var(--smoothanimation);
+    }
+    .cardProject--right{
+      .backgroundCardImage{
+        opacity: .30;
+        transition: .5s var(--smoothanimation);
+      }
+    }
+  }
+}
+
+.tag{
+  padding: 3px;
+  border: 1px solid var(--gray-300);
+  h6{
+    background-color: var(--black);
+    color: var(--white);
+    padding: var(--05m) var(--1m);
+    white-space: nowrap;
+    text-align: left;
+  }
+}
