@@ -4,6 +4,7 @@ import backgroundImage from "./../public/img/homeBg.png"
 import TemplatePage from "./pages/TemplatePage.jsx"
 import {useEffect} from "react";
 import {useDarkModeContext} from "./providers/DarkModeProvider.jsx";
+import ProjectPage from "./pages/ProjectPage.jsx";
 
 function App() {
     const {darkMode} = useDarkModeContext();
@@ -22,20 +23,20 @@ function App() {
 
     return (
         <div className="main">
-            <div className="gradient-blur gradient-blur--revert">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            {/*<div className="gradient-blur gradient-blur--revert">*/}
+            {/*    <div></div>*/}
+            {/*    <div></div>*/}
+            {/*    <div></div>*/}
+            {/*    <div></div>*/}
+            {/*    <div></div>*/}
+            {/*    <div></div>*/}
+            {/*</div>*/}
             <figure className="backgroundImage invertInDarkMode">
                 <img src={backgroundImage} alt="backgroundImage"/>
             </figure>
             <Routes>
                 <Route exact path='/' element={<TemplatePage/>}/>
-                <Route path='/:slug' element={<TemplatePage />} />
+                <Route path='/:slug' element={<ProjectPage />} />
             </Routes>
         </div>
     )

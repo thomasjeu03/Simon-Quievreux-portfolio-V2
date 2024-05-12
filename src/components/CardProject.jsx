@@ -1,9 +1,10 @@
 import {memo} from "react";
+import {Link} from "react-router-dom";
 
 const CardProject = ({data, slug, scale, rotate}) => {
 
     return (
-        <a href={slug} className="cornerBorder" style={{transform: `rotate(${rotate}deg) scale(${scale})`}}>
+        <Link to={slug} className="cornerBorder" style={{transform: `rotate(${rotate}deg) scale(${scale})`}}>
             <div className="top"></div>
             <div className="bottom"></div>
             <div className="firstBorder">
@@ -35,7 +36,7 @@ const CardProject = ({data, slug, scale, rotate}) => {
                     </div>
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 
