@@ -49,26 +49,27 @@ const ProjectPage = () => {
                         )}
                     </button>
                 </div>
-                <div className='dflexcolumn gap32' style={{ justifyContent: 'center', height: '100%'}}>
+                <div className='dflexcolumn gap32' style={{justifyContent: 'center', height: '100%'}}>
                     <div className='dflexrow gap8 nowrap w100 gapBetween'>
                         {project?.acf?.tag && project?.acf?.tag?.length > 0 && (
                             <div className='dflexrow gap8 wrap w100'>
                                 {project?.acf?.tag.map((tag, index) => (
-                                    <div className='tag'>
+                                    <div className='tag' key={index}>
                                         <h6 className='regular16' key={index}>{tag?.value}</h6>
                                     </div>
                                 ))}
                             </div>
                         )}
                         {project?.acf?.year && (
-                            <h3 className='gray-200' style={{fontWeight: 600, textAlign: 'right'}}>{project?.acf?.year}</h3>
+                            <h3 className='gray-200'
+                                style={{fontWeight: 600, textAlign: 'right'}}>{project?.acf?.year}</h3>
                         )}
                     </div>
                     <div className="dflexcolumn w100">
                         <h1 className='gradientTitre gradientTitreGray'>{project?.acf?.name}</h1>
                     </div>
                     {project?.acf?.description && (
-                        <h3 className='titre6 gray-500'>{project?.acf?.description}</h3>
+                        <p className='titre6 gray-500'>{project?.acf?.description}</p>
                     )}
                 </div>
             </div>

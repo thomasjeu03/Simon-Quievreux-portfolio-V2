@@ -5,8 +5,8 @@ import logo from '../../public/img/logo.png'
 import {useDarkModeContext} from "../providers/DarkModeProvider.jsx";
 import baseURL from "../config.js";
 import axios from "axios";
-import CardProject from "../components/CardProject.jsx";
 import {Link} from "react-router-dom";
+import ProjectCarousel from "../components/ProjectCarousel.jsx";
 
 const TemplatePage = () => {
     const iconSize  = 20
@@ -33,17 +33,7 @@ const TemplatePage = () => {
 
     return (
         <div className="HomePage">
-            <div className="left">
-                {projects && projects?.map((project, index) => (
-                    <CardProject
-                        key={index}
-                        data={project?.acf}
-                        slug={project?.slug}
-                        scale={1}
-                        rotate={0}
-                    />
-                ))}
-            </div>
+            <ProjectCarousel projects={projects} />
             <div className="right">
                 {loading && (
                     <p>Chargement</p>

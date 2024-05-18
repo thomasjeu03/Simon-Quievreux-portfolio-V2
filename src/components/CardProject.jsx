@@ -22,7 +22,7 @@ const CardProject = ({data, slug, scale, rotate}) => {
                             {data?.tag && data?.tag?.length > 0 && (
                                 <div className='dflexrow gap8 wrap w100'>
                                     {data?.tag.map((tag, index) => (
-                                        <div className='tag'>
+                                        <div className='tag' key={index}>
                                             <h6 className='regular16' key={index}>{tag?.value}</h6>
                                         </div>
                                     ))}
