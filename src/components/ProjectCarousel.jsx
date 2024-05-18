@@ -1,7 +1,14 @@
-import {memo} from "react";
+import {memo, useEffect} from "react";
 import CardProject from "./CardProject.jsx";
 
 const ProjectCarousel = ({projects}) => {
+
+    useEffect(() => {
+        const carouselTrack = document.querySelector('.carousel-track')
+        const speed = 6
+        carouselTrack.style.setProperty('--timer', projects.length * speed + 's');
+    }, [])
+
     return (
         <>
             <div className="carousel">
