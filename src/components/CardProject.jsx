@@ -1,7 +1,7 @@
 import {memo} from "react";
 import {Link} from "react-router-dom";
 
-const CardProject = ({data, slug, scale, rotate}) => {
+const CardProject = ({data, slug, scale = 1, rotate = 0}) => {
 
     return (
         <Link to={slug} className="cornerBorder" style={{transform: `rotate(${rotate}deg) scale(${scale})`}}>

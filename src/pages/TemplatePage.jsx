@@ -1,14 +1,15 @@
 import './home/Home.scss';
 import {memo, useEffect, useState} from "react";
 import { Download, Send, Sun, Moon } from 'lucide-react';
-import logo from '../../public/img/logo.png'
 import {useDarkModeContext} from "../providers/DarkModeProvider.jsx";
 import baseURL from "../config.js";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {motion} from "framer-motion";
 import ProjectCarousel from "../components/ProjectCarousel.jsx";
+import Xlogo from "../../public/img/xlogo.png";
 
-const TemplatePage = () => {
+const TemplatePage = ({home, loadingHome}) => {
     const iconSize  = 20
     const {darkMode, setDarkMode} = useDarkModeContext()
 
@@ -28,50 +29,99 @@ const TemplatePage = () => {
             }
         }
         fetchProjects()
-    }, [])
 
+    }, [])
 
     return (
         <div className="HomePage">
-            <ProjectCarousel projects={projects} />
-            <div className="right">
-                {loading && (
-                    <p>Chargement</p>
-                )}
-                <div className='dflexrow gapBetween gap8 w100' style={{alignItems: 'flex-start'}}>
-                    <Link to="/">
-                        <img src={logo} className='invertInDarkMode' alt="Logo Simon Quievreux" width={64} height={64}
-                             style={{opacity: .5}}/>
-                    </Link>
-                    <button type='button' onClick={() => setDarkMode(!darkMode)}>
-                        {darkMode ? (
-                            <Sun size={iconSize} className='gray-400'/>
-                        ) : (
-                            <Moon size={iconSize} className='gray-400'/>
+            {loading && loadingHome && (
+                <div className='loader'></div>
+            )}
+            <ProjectCarousel projects={projects} loading={loading && loadingHome} />
+            {!loadingHome && !loading && (
+                <motion.div
+                    initial={{opacity: 0, x: 60}}
+                    animate={{opacity: 1, x: 0}}
+                    transition={{
+                        duration: .6,
+                        type: "spring",
+                        bounce: 0.35
+                    }} className="right">
+                    <div className='dflexrow gapBetween gap8 w100' style={{alignItems: 'flex-start'}}>
+                        {home?.acf?.logo && (
+                            <Link to="/">
+                                <img src={home?.acf?.logo?.sizes?.thumbnail} className='invertInDarkMode'
+                                     alt="Logo Simon Quievreux" width={64} height={64}
+                                     style={{opacity: .5}}/>
+                            </Link>
                         )}
-                    </button>
-                </div>
-                <div className="dflexcolumn w100">
-                    <h1 className='gradientTitre'>SqVisuals</h1>
-                    <h2 className='gray-500'>Graphic Designer</h2>
-                </div>
-                <h3 className='titre6 gray-500'>Hi, I'm Simon, a 22yo graphic designer and video maker based in France
-                    specialized in sports and esports.</h3>
-                <div className='dflexrow gap12 w100 wrap'>
-                    <a className='CTA'
-                       href="mailto:quievrs@gmail.com">
-                        <Send className='white' size={iconSize}/>
-                        Contact me
-                    </a>
-                    <a target='_blank'
-                       rel='noopener'
-                       className='CTA CTA--pink'
-                       href="https://twitter.com/Sq_Visuals">
-                        <Download className='white' size={iconSize}/>
-                        My resume
-                    </a>
-                </div>
-            </div>
+                        {!loading && (
+                            <button type='button' onClick={() => setDarkMode(!darkMode)}>
+                                {darkMode ? (
+                                    <Sun size={iconSize} className='gray-400'/>
+                                ) : (
+                                    <Moon size={iconSize} className='gray-400'/>
+                                )}
+                            </button>
+                        )}
+                    </div>
+                    <div className="dflexcolumn w100">
+                        <h1 className='gradientTitre'>{home?.acf?.title}</h1>
+                        {home?.acf?.subtitle && (
+                            <h2 className='gray-500'>{home?.acf?.subtitle}</h2>
+                        )}
+                    </div>
+                    {home?.acf?.description && (
+                        <h3 className='titre6 gray-500'>{home?.acf?.description}</h3>
+                    )}
+                    {(home?.acf?.email || home?.acf?.resume) && (
+                        <div className='dflexrow gap16 w100 wrap'>
+                            {home?.acf?.email && (
+                                <a className='CTA'
+                                   href={`mailto:${home?.acf?.email}`}>
+                                    <Send className='white' size={iconSize}/>
+                                    Contact me
+                                </a>
+                            )}
+                            {home?.acf?.resume && (
+                                <a target='_blank'
+                                   rel='noopener'
+                                   className='CTA CTA--pink'
+                                   href={home?.acf?.resume?.url}>
+                                    <Download className='white' size={iconSize}/>
+                                    My resume
+                                </a>
+                            )}
+                        </div>
+                    )}
+                    {(home?.acf?.twitter_url || home?.acf?.instagram_url) && (
+                        <div className='dflexrow gap24 w100 wrap'>
+                            {home?.acf?.twitter_url && (
+                                <a href={home?.acf?.twitter_url} target="_blank" rel='noopener'>
+                                    <img src={Xlogo} alt='logo X' height={22} style={darkMode ? {
+                                        filter: 'invert(1)',
+                                        opacity: .8
+                                    } : {opacity: .8}}/>
+                                </a>
+                            )}
+                            {home?.acf?.instagram_url && (
+                                <a href={home?.acf?.instagram_url} target="_blank" rel='noopener'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                         viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" strokeWidth="2"
+                                         strokeLinecap="round"
+                                         strokeLinejoin="round"
+                                         className="lucide lucide-instagram gray-400">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                    </svg>
+                                </a>
+                            )}
+                        </div>
+                    )}
+                </motion.div>
+            )}
         </div>
     )
 }

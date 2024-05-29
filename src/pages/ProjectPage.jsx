@@ -1,20 +1,22 @@
 import './home/Home.scss';
-import {memo, useEffect, useState} from "react";
+import {memo, useEffect, useRef, useState} from "react";
 import { Sun, Moon } from 'lucide-react';
-import logo from '../../public/img/logo.png'
 import Xlogo from '../../public/img/xlogo.png'
 import {useDarkModeContext} from "../providers/DarkModeProvider.jsx";
 import baseURL from "../config.js";
 import axios from "axios";
+import {motion} from "framer-motion";
 import {Link, useParams} from "react-router-dom";
 
-const ProjectPage = () => {
+const ProjectPage = ({logo, loadingLogo}) => {
     const iconSize  = 20
     const {darkMode, setDarkMode} = useDarkModeContext()
     const { slug } = useParams();
 
     const [loading, setLoading] = useState(true)
     const [project, setProject] = useState([])
+
+    const rightDiv = useRef(null);
 
     useEffect(() => {
         setLoading(true)
@@ -31,6 +33,36 @@ const ProjectPage = () => {
         fetchProjects()
     }, [slug])
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const viewportHeight = window.innerHeight;
+            const halfViewportHeight = viewportHeight / 2;
+            rightDiv.current.style.marginTop = `${(viewportHeight - rightDiv.current.children[0]?.offsetHeight) /2}px`;
+            rightDiv.current.style.marginBottom = `${(viewportHeight - rightDiv.current.children[rightDiv.current.children.length - 1]?.offsetHeight) /2}px`;
+
+            if (rightDiv.current) {
+                const children = rightDiv.current.children;
+
+                Array.from(children).forEach((child) => {
+                    const rect = child.getBoundingClientRect();
+                    const positionY = rect.top + rect.height / 2;
+                    const distanceToMiddle = Math.abs(positionY - halfViewportHeight);
+                    const maxDistance = halfViewportHeight;
+
+                    const scale = 0.7 + (1 - 0.7) * (1 - distanceToMiddle / maxDistance);
+                    const rotate = 3 - (10 * (distanceToMiddle / maxDistance));
+
+                    child.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+                });
+            }
+        };
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [project]);
+
     const socialNetworkarray = [
         {name: 'facebook'},
         {name: 'twitter'},
@@ -41,7 +73,6 @@ const ProjectPage = () => {
 
     const scale = 1
 
-    console.log(project?.acf)
     const imageAray = [
         'image_1',
         'image_2',
@@ -62,24 +93,39 @@ const ProjectPage = () => {
 
     return (
         <div className="ProjectPage">
-            <div className="left">
-                {/*TODO: loading*/}
-                {loading && (
-                    <p>Chargement</p>
-                )}
-                <div className='dflexrow gapBetween gap8 w100' style={{ alignItems: 'flex-start'}}>
-                    <Link to="/">
-                        <img src={logo} className='invertInDarkMode' alt="Logo Simon Quievreux" width={64} height={64} style={{ opacity: .5}}/>
-                    </Link>
-                    <button type='button' onClick={()=>setDarkMode(!darkMode)}>
-                        {darkMode ? (
-                            <Sun size={iconSize} className='gray-400' />
-                        ):(
-                            <Moon size={iconSize} className='gray-400' />
-                        )}
-                    </button>
+            {loading && (
+                <div className='loader'></div>
+            )}
+            <div
+                className="left">
+                <div className='dflexrow gapBetween gap8 w100' style={{alignItems: 'flex-start'}}>
+                    {logo && (
+                        <Link to="/">
+                            <img src={logo} className='invertInDarkMode' alt="Logo Simon Quievreux" width={64}
+                                 height={64} style={{opacity: .5}}/>
+                        </Link>
+                    )}
+                    {!loadingLogo && (
+                        <button type='button' onClick={() => setDarkMode(!darkMode)}>
+                            {darkMode ? (
+                                <Sun size={iconSize} className='gray-400'/>
+                            ) : (
+                                <Moon size={iconSize} className='gray-400'/>
+                            )}
+                        </button>
+                    )}
                 </div>
-                <div className='dflexcolumn gap32 w100' style={{justifyContent: 'center', height: '84dvh'}}>
+                {!loading && (
+                <motion.div
+                    initial={{ opacity: 0, x: -60 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                        duration: .6,
+                        delay: 0,
+                        type: "spring",
+                        bounce: 0.35
+                    }}
+                    className='dflexcolumn gap32 w100' style={{justifyContent: 'center', height: '84dvh'}}>
                     <div className='dflexrow gap8 nowrap w100 gapBetween'>
                         {project?.acf?.tag && project?.acf?.tag?.length > 0 && (
                             <div className='dflexrow gap8 wrap w100'>
@@ -102,15 +148,18 @@ const ProjectPage = () => {
                         <p className='titre6 gray-500'>{project?.acf?.description}</p>
                     )}
                     {project?.acf?.client && (
-                        <p className='regular16 gray-300'>Made for : <span className="gray-500">{project?.acf?.client}</span></p>
+                        <p className='regular16 gray-300'>Made for : <span
+                            className="gray-500">{project?.acf?.client}</span></p>
                     )}
                     {darkMode ? (
                         project?.acf?.logo_dark_mode && (
-                        <img src={project?.acf?.logo_dark_mode?.sizes?.medium} alt={project?.acf?.logo_dark_mode?.title} height={100} />
-                    )):(
+                            <img src={project?.acf?.logo_dark_mode?.sizes?.medium}
+                                 alt={project?.acf?.logo_dark_mode?.title} height={100}/>
+                        )) : (
                         project?.acf?.logo_light_mode && (
-                        <img src={project?.acf?.logo_light_mode?.sizes?.medium} alt={project?.acf?.logo_light_mode?.title} height={100} />
-                    ))}
+                            <img src={project?.acf?.logo_light_mode?.sizes?.medium}
+                                 alt={project?.acf?.logo_light_mode?.title} height={100}/>
+                        ))}
                     <div className='dflexrow gap32 wrap w100'>
                         {socialNetworkarray && socialNetworkarray.map((social, index) => (
                             project?.acf?.[social?.name + '_url'] && (
@@ -128,13 +177,18 @@ const ProjectPage = () => {
                                         </svg>
                                     )}
                                     {social?.name === 'twitter' && (
-                                        <img src={Xlogo} alt='logo X' height={22} style={darkMode ? {filter: 'invert(1)', opacity: .8}:{opacity: .8}}/>
+                                        <img src={Xlogo} alt='logo X' height={22} style={darkMode ? {
+                                            filter: 'invert(1)',
+                                            opacity: .8
+                                        } : {opacity: .8}}/>
                                     )}
                                     {social?.name === 'instagram' && (
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                              viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                                             strokeLinejoin="round" className="lucide lucide-instagram gray-400">
+                                             fill="none" stroke="currentColor" strokeWidth="2"
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round"
+                                             className="lucide lucide-instagram gray-400">
                                             <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                                             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
@@ -150,46 +204,76 @@ const ProjectPage = () => {
                                     {social?.name === 'other' && (
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                              viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                             fill="none" stroke="currentColor" strokeWidth="2"
+                                             strokeLinecap="round"
                                              strokeLinejoin="round" className="lucide lucide-link gray-400">
-                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                            <path
+                                                d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                            <path
+                                                d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
                                         </svg>
                                     )}
                                 </a>
                             )
                         ))}
                     </div>
+                </motion.div>
+                )}
+            </div>
+                <div className="right" ref={rightDiv}>
+                    {!loading && (
+                        <>
+                            {project?.acf?.main_image && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 60 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{
+                                        duration: .6,
+                                        type: "spring",
+                                        bounce: 0.35
+                                    }}
+                                    className="cornerBorder imagePreview"
+                                    style={{transform: `rotate(${0}deg) scale(${scale})`}}>
+                                    <div className="top"></div>
+                                    <div className="bottom"></div>
+                                    <div className="firstBorder">
+                                        <img className='imagePreview' style={{width: '100%', height: 'auto'}}
+                                             src={project?.acf?.main_image?.sizes?.large}
+                                             alt={project?.acf?.main_image?.title}/>
+                                    </div>
+                                </motion.div>
+                            )}
+
+                            {/*TODO : player video*/}
+                            {project?.acf?.video && (
+                                <video src=""></video>
+                            )}
+
+                            {imageAray.map((imageAray, index) => (
+                                project?.acf?.[imageAray] && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 60 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                            duration: .6,
+                                            type: "spring",
+                                            bounce: 0.35
+                                        }}
+                                        className="cornerBorder imagePreview" key={index}
+                                        style={{transform: `rotate(${0}deg) scale(${scale})`}}>
+                                        <div className="top"></div>
+                                        <div className="bottom"></div>
+                                        <div className="firstBorder">
+                                            <img className='imagePreview' style={{width: '100%', height: 'auto'}}
+                                                 src={project?.acf?.[imageAray]?.sizes?.large}
+                                                 alt={project?.acf?.[imageAray]?.title}/>
+                                        </div>
+                                    </motion.div>
+                                )
+                            ))}
+                        </>
+                    )}
                 </div>
-            </div>
-            <div className="right">
-                {project?.acf?.main_image && (
-                    <div className="cornerBorder imagePreview" style={{transform: `rotate(${0}deg) scale(${scale})`}}>
-                        <div className="top"></div>
-                        <div className="bottom"></div>
-                        <div className="firstBorder">
-                            <img className='imagePreview' style={{ width: '100%', height: 'auto' }} src={project?.acf?.main_image?.sizes?.large} alt={project?.acf?.main_image?.title}/>
-                        </div>
-                    </div>
-                )}
-
-                {/*TODO : player video*/}
-                {project?.acf?.video && (
-                    <video src=""></video>
-                )}
-
-                {imageAray.map((imageAray, index) => (
-                    project?.acf?.[imageAray] && (
-                        <div className="cornerBorder imagePreview" key={index} style={{transform: `rotate(${0}deg) scale(${scale})`}}>
-                            <div className="top"></div>
-                            <div className="bottom"></div>
-                            <div className="firstBorder">
-                                <img className='imagePreview' style={{ width: '100%', height: 'auto' }} src={project?.acf?.[imageAray]?.sizes?.large} alt={project?.acf?.[imageAray]?.title}/>
-                            </div>
-                        </div>
-                    )
-                ))}
-            </div>
         </div>
     )
 }
