@@ -7,6 +7,8 @@ import baseURL from "../config.js";
 import axios from "axios";
 import {motion} from "framer-motion";
 import {Link, useParams} from "react-router-dom";
+import { Player, ControlBar, PlayToggle, VolumeMenuButton, ProgressControl, CurrentTimeDisplay, TimeDivider, DurationDisplay, FullscreenToggle } from 'video-react';
+import 'video-react/dist/video-react.css';
 
 const ProjectPage = ({logo, loadingLogo}) => {
     const iconSize  = 20
@@ -244,16 +246,36 @@ const ProjectPage = ({logo, loadingLogo}) => {
                                 </motion.div>
                             )}
 
-                            {/*TODO : player video*/}
                             {project?.acf?.video && (
-                                <video src=""></video>
+                                <div className='cornerBorder videoPreview'>
+                                    <div className="top"></div>
+                                    <div className="bottom"></div>
+                                    <div className="firstBorder">
+                                        <Player
+                                            src={project?.acf?.video?.url}
+                                            fluid={true}
+                                            width="100%"
+                                            height="100%"
+                                        >
+                                            <ControlBar autoHide={true} disableDefaultControls>
+                                                <PlayToggle />
+                                                <VolumeMenuButton />
+                                                <CurrentTimeDisplay />
+                                                <TimeDivider />
+                                                <DurationDisplay />
+                                                <ProgressControl />
+                                                <FullscreenToggle />
+                                            </ControlBar>
+                                        </Player>
+                                    </div>
+                                </div>
                             )}
 
                             {imageAray.map((imageAray, index) => (
                                 project?.acf?.[imageAray] && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: 60 }}
-                                        animate={{ opacity: 1, y: 0 }}
+                                        initial={{opacity: 0, y: 60}}
+                                        animate={{opacity: 1, y: 0}}
                                         transition={{
                                             duration: .6,
                                             type: "spring",

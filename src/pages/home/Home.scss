@@ -102,11 +102,64 @@
     }
     .videoPreview{
       width: fit-content;
-      video{
-        max-width: 550px;
-      }
     }
   }
+}
+.video-react{
+  width: 550px !important;
+  height: 100%;
+  font-family: var(--text-font) !important;
+}
+.video-react .video-react-control-bar {
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border-radius: 30px;
+  width: calc(100% - var(--2m)) !important;
+  margin-bottom: var(--1m) !important;
+  margin-left: var(--1m) !important;
+  margin-right: var(--1m) !important;
+  background-color: var(--white-lighter) !important; /* Background color of control bar */
+}
+.video-react .video-react-control:focus:before, .video-react .video-react-control:hover:before, .video-react .video-react-control:focus{
+  text-shadow: none !important;
+  opacity: .7;
+}
+.video-react-big-play-button{
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: var(--6m) !important;
+  height: var(--6m) !important;
+  border: none !important;
+  border-radius: 100% !important;
+  background: var(--white-light) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  &:before{
+    top: 2px !important;
+    color: var(--primary);
+  }
+}
+.video-react-slider{
+  &:focus{
+    box-shadow: none !important;
+  }
+}
+.video-react .video-react-button {
+  color: var(--black) !important; /* Color of control buttons */
+}
+
+.video-react .video-react-play-progress {
+  border-radius: 10px !important;
+  background: var(--primary) !important; /* Color of the play progress bar */
+}
+
+.video-react .video-react-load-progress {
+  background: #555 !important; /* Color of the load progress bar */
+}
+
+.video-react .video-react-seek-bar {
+  background: #333 !important; /* Color of the seek bar */
 }
 .loader{
   position: absolute;
