@@ -60,7 +60,7 @@
   font-weight: 500;
   font-family: var(--title-font-heavy);
 }
-.titre2, h2{
+.titre2, h2, .cursor{
   font-size: var(--6m);
   line-height: normal;
   font-weight: 500;
@@ -98,7 +98,7 @@
   .titre1, h1{
     font-size: var(--6m);
   }
-  .titre2, h2{
+  .titre2, h2, .cursor{
     font-size: var(--5m);
   }
   .titre3, h3{
@@ -122,7 +122,7 @@
   .titre1, h1{
     font-size: var(--5m);
   }
-  .titre2, h2{
+  .titre2, h2, .cursor{
     font-size: var(--4m);
   }
   .titre3, h3{
@@ -140,13 +140,13 @@
 }
 @media only screen and (max-width: 400px){
   .gradientTitre{
-    font-size: 62px;
-    line-height: 52px;
+    font-size: 52px;
+    line-height: 44px;
   }
   .titre1, h1{
     font-size: var(--4m);
   }
-  .titre2, h2{
+  .titre2, h2, .cursor{
     font-size: 26px;
   }
   .titre3, h3{

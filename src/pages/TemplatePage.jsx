@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
 import ProjectCarousel from "../components/ProjectCarousel.jsx";
 import Xlogo from "../../public/img/xlogo.png";
+import ReactTypingEffect from 'react-typing-effect';
 
 const TemplatePage = ({home, loadingHome}) => {
     const iconSize  = 20
@@ -50,9 +51,9 @@ const TemplatePage = ({home, loadingHome}) => {
                     <div className='dflexrow gapBetween gap8 w100' style={{alignItems: 'flex-start'}}>
                         {home?.acf?.logo && (
                             <Link to="/">
-                                <img src={home?.acf?.logo?.sizes?.thumbnail} className='invertInDarkMode'
+                                <img src={darkMode ? home?.acf?.logo_dark?.sizes?.thumbnail : home?.acf?.logo?.sizes?.thumbnail}
                                      alt="Logo Simon Quievreux" width={64} height={64}
-                                     style={{opacity: .5}}/>
+                                />
                             </Link>
                         )}
                         {!loading && (
@@ -67,8 +68,32 @@ const TemplatePage = ({home, loadingHome}) => {
                     </div>
                     <div className="dflexcolumn w100">
                         <h1 className='gradientTitre'>{home?.acf?.title}</h1>
-                        {home?.acf?.subtitle && (
-                            <h2 className='gray-500'>{home?.acf?.subtitle}</h2>
+                        {(home?.acf?.subtitle && home?.acf?.subtitle_2) ? (
+                            <ReactTypingEffect
+                                speed={50}
+                                eraseSpeed={25}
+                                eraseDelay={3000}
+                                typingDelay={0}
+                                cursor={'_'}
+                                cursorClassName='cursor'
+                                text={[home?.acf?.subtitle, home?.acf?.subtitle_2]}
+                                displayTextRenderer={(text, i) => {
+                                    return (
+                                        <h2 className='gray-500' key={i}>
+                                            {text}
+                                        </h2>
+                                    );
+                                }}
+                            />
+                        ):(
+                            <>
+                                {(home?.acf?.subtitle && !home?.acf?.subtitle_2) && (
+                                    <h2 className='gray-500'>{home?.acf?.subtitle}</h2>
+                                )}
+                                {(!home?.acf?.subtitle && home?.acf?.subtitle_2) && (
+                                    <h2 className='gray-500'>{home?.acf?.subtitle_2}</h2>
+                                )}
+                            </>
                         )}
                     </div>
                     {home?.acf?.description && (

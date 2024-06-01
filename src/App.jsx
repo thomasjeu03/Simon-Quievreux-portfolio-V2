@@ -39,6 +39,14 @@ function App() {
         fetchHomes()
     }, [])
 
+    const root = document.documentElement;
+
+    const primaryColor = `${home?.acf?.primary_color?.red},${home?.acf?.primary_color?.green},${home?.acf?.primary_color?.blue}`;
+    const secondaryColor = `${home?.acf?.secondary_color?.red},${home?.acf?.secondary_color?.green},${home?.acf?.secondary_color?.blue}`;
+
+    root.style.setProperty('--primary-rgb', primaryColor);
+    root.style.setProperty('--secondary-rgb', secondaryColor);
+
     return (
         <div className="main">
             {home?.acf?.background && (
@@ -48,7 +56,7 @@ function App() {
             )}
             <Routes>
                 <Route exact path='/' element={<TemplatePage home={home} loadingHome={loadingHome}/>}/>
-                <Route path='/:slug' element={<ProjectPage logo={home?.acf?.logo?.sizes?.thumbnail} loadingLogo={loadingHome} />} />
+                <Route path='/:slug' element={<ProjectPage logo={darkMode ? home?.acf?.logo_dark?.sizes?.thumbnail : home?.acf?.logo?.sizes?.thumbnail} loadingLogo={loadingHome} />} />
             </Routes>
         </div>
     )

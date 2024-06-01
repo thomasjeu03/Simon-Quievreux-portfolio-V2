@@ -14,9 +14,9 @@ const CardProject = ({data, slug, scale = 1, rotate = 0}) => {
                     </figure>
                     <div className='cardProject--right'>
                         <div className='w100'>
-                            {data?.year && (
-                                <h3 className='gray-200' style={{fontWeight: 600, textAlign: 'right'}}>{data?.year}</h3>
-                            )}
+                            {/*{data?.year && (*/}
+                            {/*    <h3 className='gray-200' style={{fontWeight: 600, textAlign: 'right'}}>{data?.year}</h3>*/}
+                            {/*)}*/}
                         </div>
                         <div className='dflexcolumn gap16 w100'>
                             {data?.tag && data?.tag?.length > 0 && (

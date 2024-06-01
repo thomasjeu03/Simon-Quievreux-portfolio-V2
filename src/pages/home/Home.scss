@@ -60,7 +60,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: var(--6m);
   width: 100%;
   height: auto;
   min-height: 100dvh;
@@ -102,6 +101,33 @@
     }
     .videoPreview{
       width: fit-content;
+    }
+  }
+  @media only screen and (max-width: 900px){
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    .left{
+      max-width: 100%;
+      min-height: auto;
+      width: 100%;
+      position: relative;
+      top: auto;
+      gap: var(--3m);
+      padding: var(--3m);
+      &>.dflexcolumn{
+        justify-content: flex-start !important;
+        height: auto !important;
+      }
+    }
+    .right{
+      margin: 0 !important;
+      max-width: 100%;
+      min-height: auto;
+      height: auto;
+      width: 100%;
+      gap: var(--3m);
+      padding: var(--3m);
     }
   }
 }

@@ -11,7 +11,7 @@
   gap: var(--1m);
   text-decoration: none;
   color: var(--white);
-  margin-left: var(--2m);
+  margin-left: 20px;
   outline: none;
   background: var(--mainColor);
   transition: .5s var(--smoothanimation);
@@ -174,70 +174,6 @@
                   rgba(0, 0, 0, 0) 87.5%,
                   rgba(0, 0, 0, 1) 100%
   );
-}
-.hover-effect{
-  transform-style: preserve-3d;
-  position: relative;
-  color: var(--white);
-  cursor: pointer;
-  div{
-    pointer-events: none;
-    transform-origin: center;
-    transform-style: preserve-3d;
-    transition: transform .4s;
-    &>span{
-      display: block;
-      transform-origin: top center;
-      transform-style: preserve-3d;
-      transition: opacity .4s,color .4s,transform .4s;
-    }
-    &>span:first-child{
-      transform: rotateX(0deg) translate3d(0,0%,0);
-    }
-    &>span:nth-child(2){
-      left: 0;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      color: var(--white);
-      transform: rotateX(-90deg) translate3d(0,50%,0);
-      transform-origin: bottom center;
-      transition: opacity .4s,visibility 1ms .4s,color .4s,transform .4s;
-      visibility: hidden;
-    }
-  }
-  &:before{
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 0;
-    bottom: -3px;
-    right: 0;
-    background-color: var(--white);
-    transition: .5s cubic-bezier(.215, .61, .355, 1);
-  }
-  &:hover{
-    div>span:first-child{
-      opacity: 0;
-      visibility: hidden;
-      transform: rotateX(90deg) translate3d(0,-100%,0);
-      -webkit-transform: rotateX(90deg) translate3d(0,-100%,0);
-      transition: opacity .4s,visibility 1ms .4s,color .4s,transform .4s;
-    }
-    div>span:nth-child(2){
-      opacity: 1;
-      visibility: visible;
-      transform: rotateX(0deg) translate3d(0,0,0);
-      -webkit-transform: rotateX(0deg) translate3d(0,0%,0);
-      transition: opacity .4s,color .4s,transform .4s;
-    }
-    &:before{
-      transition: .5s cubic-bezier(.215, .61, .355, 1);
-      left: 0;
-      width: 100%;
-      background-color: var(--white);
-    }
-  }
 }
 .w100{
   width: 100%;
