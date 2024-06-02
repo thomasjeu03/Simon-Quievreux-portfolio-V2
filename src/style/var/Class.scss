@@ -26,7 +26,7 @@
     transform: translateX(-100%);
     content: '';
     background: none;
-    height: -webkit-fill-available;
+    height: calc(100% - 4px);
     border: 2px solid var(--mainColor);
     width: var(--2m);
     transition: .5s var(--smoothanimation);
