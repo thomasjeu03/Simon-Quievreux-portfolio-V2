@@ -54,6 +54,76 @@
     gap: var(--4m);
     padding: var(--4m);
   }
+  @media only screen and (max-width: 1350px){
+    gap: 0;
+    .carousel{
+      max-width: auto;
+      width: 60%;
+      gap: 0;
+      padding: var(--3m);
+      max-height: 100dvh;
+      .carousel-track {
+        gap: var(--3m);
+      }
+    }
+    .right{
+      max-width: none;
+      width: 40%;
+      gap: var(--3m);
+      padding: var(--3m);
+    }
+  }
+  @media only screen and (max-width: 1100px){
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    .carousel{
+      max-width: 100%;
+      height: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: flex-start;
+      gap: 0;
+      padding: var(--3m);
+      overflow: hidden;
+      max-height: none;
+      .carousel-track {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: auto;
+        animation: scroll var(--timer) linear infinite;
+        transition: transform 0.5s ease-in-out;
+      }
+      .carousel-track.paused {
+        animation-play-state: paused;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .carousel-track > * {
+        flex: 0 0 auto;
+        width: 66dvw;
+      }
+    }
+    .right{
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+    }
+  }
+  @media only screen and (max-width: 800px){
+    padding-bottom: var(--10m);
+  }
 }
 .ProjectPage{
   display: flex;
@@ -107,6 +177,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding-bottom: var(--10m);
     .left{
       max-width: 100%;
       min-height: auto;
@@ -132,9 +203,23 @@
   }
 }
 .video-react{
-  width: 550px !important;
+  width: 500px !important;
+  min-width: 500px !important;
   height: 100%;
   font-family: var(--text-font) !important;
+  @media only screen and (max-width: 1200px){
+    width: 440px !important;
+    min-width: 440px !important;
+  }
+  @media only screen and (max-width: 1050px){
+    width: 400px !important;
+    min-width: 400px !important;
+  }
+  @media only screen and (max-width: 900px){
+    width: 75dvw !important;
+    min-width: 200px !important;
+    max-width: 450px !important;
+  }
 }
 .video-react .video-react-control-bar {
   backdrop-filter: blur(5px) !important;
@@ -174,16 +259,13 @@
 .video-react .video-react-button {
   color: var(--black) !important; /* Color of control buttons */
 }
-
 .video-react .video-react-play-progress {
   border-radius: 10px !important;
   background: var(--primary) !important; /* Color of the play progress bar */
 }
-
 .video-react .video-react-load-progress {
   background: #555 !important; /* Color of the load progress bar */
 }
-
 .video-react .video-react-seek-bar {
   background: #333 !important; /* Color of the seek bar */
 }
@@ -317,6 +399,25 @@
       transition: .5s var(--smoothanimation);
     }
   }
+  @media only screen and (max-width: 500px){
+    padding: var(--1m);
+    .top, .bottom{
+      height: 30px;
+      &::before, &::after{
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &:hover{
+      .top, .bottom{
+        height: 40px;
+        &::before, &::after{
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
 }
 .firstBorder{
   display: flex;
@@ -331,6 +432,9 @@
   &:hover{
     border-color: var(--primary-light);
     transition: .5s var(--smoothanimation);
+  }
+  @media only screen and (max-width: 500px){
+    padding: var(--1m);
   }
 }
 .cardProject{
@@ -393,6 +497,27 @@
         opacity: .30;
         transition: .5s var(--smoothanimation);
       }
+    }
+  }
+  @media only screen and (max-width: 1350px){
+    .cardProject--right{
+      gap: var(--1m);
+      padding: var(--2m);
+    }
+  }
+  @media only screen and (max-width: 1100px){
+    height: calc(100dvw * 0.3);
+  }
+  @media only screen and (max-width: 800px){
+    flex-direction: column;
+    height: auto;
+    &--left{
+      width: 100%;
+    }
+    &--right{
+      width: 100%;
+      padding: 12px var(--2m) !important;
+      height: auto !important;
     }
   }
 }

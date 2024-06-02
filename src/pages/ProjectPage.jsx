@@ -93,6 +93,11 @@ const ProjectPage = ({logo, loadingLogo}) => {
         'image_15',
     ]
 
+    const fullScreenImage = (index) => {
+        const image = document.getElementById(`image_${index}`)
+        image.requestFullscreen().then(r => {})
+    }
+
     return (
         <div className="ProjectPage">
             {loading && (
@@ -234,11 +239,12 @@ const ProjectPage = ({logo, loadingLogo}) => {
                                     bounce: 0.35
                                 }}
                                 className="cornerBorder imagePreview"
+                                onClick={() => fullScreenImage(0)}
                                 style={{transform: `rotate(${0}deg) scale(${scale})`}}>
                                 <div className="top"></div>
                                     <div className="bottom"></div>
                                     <div className="firstBorder">
-                                        <img className='imagePreview' style={{width: '100%', height: 'auto'}}
+                                        <img id='image_0' className='imagePreview' style={{width: '100%', height: 'auto'}}
                                              src={project?.acf?.main_image?.sizes?.large}
                                              alt={project?.acf?.main_image?.title}/>
                                     </div>
@@ -280,12 +286,13 @@ const ProjectPage = ({logo, loadingLogo}) => {
                                             type: "spring",
                                             bounce: 0.35
                                         }}
+                                        onClick={() => fullScreenImage(index)}
                                         className="cornerBorder imagePreview" key={index}
                                         style={{transform: `rotate(${0}deg) scale(${scale})`}}>
                                         <div className="top"></div>
                                         <div className="bottom"></div>
                                         <div className="firstBorder">
-                                            <img className='imagePreview' style={{width: '100%', height: 'auto'}}
+                                            <img id={`image_${index}`} className='imagePreview' style={{width: '100%', height: 'auto'}}
                                                  src={project?.acf?.[imageAray]?.sizes?.large}
                                                  alt={project?.acf?.[imageAray]?.title}/>
                                         </div>

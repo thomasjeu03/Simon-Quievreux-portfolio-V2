@@ -9,6 +9,9 @@
     width: 100%;
     position: relative;
     min-height: 100dvh;
+    @media only screen and (max-width: 900px){
+        overflow-x: hidden;
+    }
     .backgroundImage{
         pointer-events: none;
         z-index: -10;
