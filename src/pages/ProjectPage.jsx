@@ -91,6 +91,11 @@ const ProjectPage = ({logo, loadingLogo}) => {
         'image_13',
         'image_14',
         'image_15',
+        'image_16',
+        'image_17',
+        'image_18',
+        'image_19',
+        'image_20',
     ]
 
     const videosArray = [
