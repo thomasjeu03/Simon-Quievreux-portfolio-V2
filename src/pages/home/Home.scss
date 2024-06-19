@@ -87,17 +87,43 @@
       align-content: center;
       justify-content: flex-start;
       gap: 0;
-      padding: var(--3m);
+      padding: 0;
       overflow: hidden;
       max-height: none;
+      .swiper{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: flex-start;
+        padding: var(--4m);
+      }
+      .swiper-wrapper{
+        height: 100dvh;
+      }
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        height: auto !important;
+        .cornerBorder{
+          width: 100%;
+        }
+      }
       .carousel-track {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
-        width: auto;
-        animation: scroll var(--timer) linear infinite;
-        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        overflow: auto;
+        scroll-behavior: smooth;
       }
       .carousel-track.paused {
         animation-play-state: paused;
