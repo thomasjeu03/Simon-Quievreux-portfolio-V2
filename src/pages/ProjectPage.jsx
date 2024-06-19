@@ -75,7 +75,7 @@ const ProjectPage = ({logo, loadingLogo}) => {
 
     const scale = 1
 
-    const imageAray = [
+    const imageArray = [
         'image_1',
         'image_2',
         'image_3',
@@ -91,6 +91,19 @@ const ProjectPage = ({logo, loadingLogo}) => {
         'image_13',
         'image_14',
         'image_15',
+    ]
+
+    const videosArray = [
+        'video_1',
+        'video_2',
+        'video_3',
+        'video_4',
+        'video_5',
+        'video_6',
+        'video_7',
+        'video_8',
+        'video_9',
+        'video_10',
     ]
 
     const fullScreenImage = (index) => {
@@ -251,50 +264,54 @@ const ProjectPage = ({logo, loadingLogo}) => {
                                 </motion.div>
                             )}
 
-                            {project?.acf?.video && (
-                                <div className='cornerBorder videoPreview'>
+
+                        {videosArray.map((video, index) => (
+                            project?.acf?.[video] && (
+                                <div className='cornerBorder videoPreview' key={index}>
                                     <div className="top"></div>
                                     <div className="bottom"></div>
                                     <div className="firstBorder">
                                         <Player
-                                            src={project?.acf?.video?.url}
+                                            src={project?.acf?.[video]?.url}
                                             fluid={true}
                                             width="100%"
                                             height="100%"
                                         >
                                             <ControlBar autoHide={true} disableDefaultControls>
-                                                <PlayToggle />
-                                                <VolumeMenuButton />
-                                                <CurrentTimeDisplay />
-                                                <TimeDivider />
-                                                <DurationDisplay />
-                                                <ProgressControl />
-                                                <FullscreenToggle />
+                                                <PlayToggle/>
+                                                <VolumeMenuButton/>
+                                                <CurrentTimeDisplay/>
+                                                <TimeDivider/>
+                                                <DurationDisplay/>
+                                                <ProgressControl/>
+                                                <FullscreenToggle/>
                                             </ControlBar>
                                         </Player>
                                     </div>
                                 </div>
-                            )}
+                            )
+                        ))}
 
-                            {imageAray.map((imageAray, index) => (
-                                project?.acf?.[imageAray] && (
-                                    <motion.div
-                                        initial={{opacity: 0, y: 60}}
-                                        animate={{opacity: 1, y: 0}}
-                                        transition={{
-                                            duration: .6,
-                                            type: "spring",
-                                            bounce: 0.35
-                                        }}
-                                        onClick={() => fullScreenImage(index)}
-                                        className="cornerBorder imagePreview" key={index}
-                                        style={{transform: `rotate(${0}deg) scale(${scale})`}}>
-                                        <div className="top"></div>
-                                        <div className="bottom"></div>
-                                        <div className="firstBorder">
-                                            <img id={`image_${index}`} className='imagePreview' style={{width: '100%', height: 'auto'}}
-                                                 src={project?.acf?.[imageAray]?.sizes?.large}
-                                                 alt={project?.acf?.[imageAray]?.title}/>
+                        {imageArray.map((imageArray, index) => (
+                            project?.acf?.[imageArray] && (
+                                <motion.div
+                                    initial={{opacity: 0, y: 60}}
+                                    animate={{opacity: 1, y: 0}}
+                                    transition={{
+                                        duration: .6,
+                                        type: "spring",
+                                        bounce: 0.35
+                                    }}
+                                    onClick={() => fullScreenImage(index)}
+                                    className="cornerBorder imagePreview" key={index}
+                                    style={{transform: `rotate(${0}deg) scale(${scale})`}}>
+                                    <div className="top"></div>
+                                    <div className="bottom"></div>
+                                    <div className="firstBorder">
+                                        <img id={`image_${index}`} className='imagePreview'
+                                             style={{width: '100%', height: 'auto'}}
+                                             src={project?.acf?.[imageArray]?.sizes?.large}
+                                                 alt={project?.acf?.[imageArray]?.title}/>
                                         </div>
                                     </motion.div>
                                 )
