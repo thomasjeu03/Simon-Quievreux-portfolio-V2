@@ -8,7 +8,7 @@
   min-height: 100dvh;
   height: auto;
   .carousel{
-    max-width: 820px;
+    max-width: 1230px;
     height: 100%;
     width: 66%;
     display: flex;
@@ -33,7 +33,7 @@
     }
   }
   .right{
-    max-width: 450px;
+    max-width: 675px;
     height: 100dvh;
     width: 33%;
     display: flex;
@@ -151,7 +151,7 @@
   height: auto;
   min-height: 100dvh;
   .left{
-    max-width: 570px;
+    max-width: 855px;
     height: auto;
     overflow: hidden;
     min-height: 100dvh;
@@ -166,7 +166,7 @@
     padding: var(--4m);
   }
   .right{
-    max-width: 820px;
+    max-width: 1240px;
     min-height: 100dvh;
     height: auto;
     width: 55%;
@@ -183,7 +183,7 @@
       width: fit-content;
       cursor: pointer;
       img{
-        max-width: 450px;
+        max-width: 675px;
       }
     }
     .videoPreview{
@@ -280,22 +280,22 @@
   }
 }
 .video-react{
-  width: 500px !important;
-  min-width: 500px !important;
+  width: 600px !important;
+  min-width: 600px !important;
   height: 100%;
   font-family: var(--text-font) !important;
   @media only screen and (max-width: 1200px){
-    width: 440px !important;
-    min-width: 440px !important;
+    width: 550px !important;
+    min-width: 550px !important;
   }
   @media only screen and (max-width: 1050px){
-    width: 400px !important;
-    min-width: 400px !important;
+    width: 470px !important;
+    min-width: 470px !important;
   }
   @media only screen and (max-width: 900px){
     width: 75dvw !important;
     min-width: 200px !important;
-    max-width: 450px !important;
+    max-width: 550px !important;
   }
 }
 .video-react .video-react-control-bar {
