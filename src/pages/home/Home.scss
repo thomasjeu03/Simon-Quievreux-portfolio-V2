@@ -17,26 +17,15 @@
     justify-content: flex-start;
     gap: var(--5m);
     padding: var(--4m);
-    overflow: hidden;
-    max-height: 100dvh;
+    overflow: auto;
     .carousel-track {
       display: flex;
       flex-direction: column;
       gap: var(--5m);
-      width: 100%;
-      animation: scroll var(--timer) linear infinite;
-      transition: transform 0.5s ease-in-out;
+      width: 100%
     }
     .carousel-track.paused {
       animation-play-state: paused;
-    }
-    @keyframes scroll {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-50%);
-      }
     }
     .carousel-track > * {
       flex: 0 0 auto;
@@ -53,6 +42,8 @@
     justify-content: center;
     gap: var(--4m);
     padding: var(--4m);
+    position: sticky;
+    top: 0;
   }
   @media only screen and (max-width: 1350px){
     gap: 0;
@@ -61,7 +52,6 @@
       width: 60%;
       gap: 0;
       padding: var(--3m);
-      max-height: 100dvh;
       .carousel-track {
         gap: var(--3m);
       }
@@ -100,7 +90,7 @@
         padding: var(--4m);
       }
       .swiper-wrapper{
-        height: 100dvh;
+        height: auto;
       }
       .swiper-container {
         width: 100%;
@@ -110,7 +100,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        width: 100%;
+        width: 86%;
         height: auto !important;
         .cornerBorder{
           width: 100%;
@@ -142,6 +132,7 @@
       }
     }
     .right{
+      position: relative;
       width: 100%;
       max-width: 650px;
       height: auto;
@@ -225,6 +216,66 @@
       width: 100%;
       gap: var(--3m);
       padding: var(--3m);
+    }
+  }
+  .cornerBorder{
+    cursor: default !important;
+    img{
+      cursor: default !important;
+    }
+    &:hover{
+      .top, .bottom{
+        height: 60px;
+        &::before, &::after{
+          width: 60px;
+          height: 60px;
+        }
+        &::before{
+          border-left: 1px solid var(--gray-200);
+          border-top: 1px solid var(--gray-200);
+        }
+        &::after{
+          border-right: 1px solid var(--gray-200);
+          border-top: 1px solid var(--gray-200);
+        }
+      }
+      .bottom{
+        &::before{border-top: none;
+          border-bottom: 1px solid var(--gray-200);
+        }
+        &::after{border-top: none;
+          border-bottom: 1px solid var(--gray-200);
+        }
+      }
+      .cardProject{
+        img{
+          transform: scale(1) !important;
+          transition: .5s var(--smoothanimation);
+        }
+      }
+      .firstBorder{
+        border-color: var(--gray-200);
+        transition: .5s var(--smoothanimation);
+      }
+    }
+    @media only screen and (max-width: 500px){
+      padding: var(--1m);
+      .top, .bottom{
+        height: 30px;
+        &::before, &::after{
+          width: 30px;
+          height: 30px;
+        }
+      }
+      &:hover{
+        .top, .bottom{
+          height: 30px;
+          &::before, &::after{
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
     }
   }
 }

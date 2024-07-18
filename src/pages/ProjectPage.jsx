@@ -111,11 +111,6 @@ const ProjectPage = ({logo, loadingLogo}) => {
         'video_10',
     ]
 
-    const fullScreenImage = (index) => {
-        const image = document.getElementById(`image_${index}`)
-        image.requestFullscreen().then(r => {})
-    }
-
     return (
         <div className="ProjectPage">
             {loading && (
@@ -257,7 +252,6 @@ const ProjectPage = ({logo, loadingLogo}) => {
                                     bounce: 0.35
                                 }}
                                 className="cornerBorder imagePreview"
-                                onClick={() => fullScreenImage(0)}
                                 style={{transform: `rotate(${0}deg) scale(${scale})`}}>
                                 <div className="top"></div>
                                     <div className="bottom"></div>
@@ -307,7 +301,6 @@ const ProjectPage = ({logo, loadingLogo}) => {
                                         type: "spring",
                                         bounce: 0.35
                                     }}
-                                    onClick={() => fullScreenImage(index)}
                                     className="cornerBorder imagePreview" key={index}
                                     style={{transform: `rotate(${0}deg) scale(${scale})`}}>
                                     <div className="top"></div>

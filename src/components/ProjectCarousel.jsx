@@ -8,10 +8,6 @@ const ProjectCarousel = ({ projects, loading }) => {
 
     useEffect(() => {
         if (!loading) {
-            const carouselTrack = document.querySelector('.carousel-track');
-            let speed = 5; // Initial speed
-            carouselTrack?.style.setProperty('--timer', (projects.length || 3) * speed + 's');
-
             const checkIsMobile = () => {
                 if (window.innerWidth > 1100) {
                     setIsMobile(false);
@@ -20,25 +16,15 @@ const ProjectCarousel = ({ projects, loading }) => {
                 }
             };
 
-            const handleWheel = (event) => {
-                if (isMobile) {
-                    return
-                }
-                speed = 5;
-                carouselTrack?.style.setProperty('--timer', (projects.length || 3) * speed + 's');
-            };
-
             // Initial check for mobile view
             checkIsMobile();
 
             // Event listeners
             window.addEventListener('resize', checkIsMobile);
-            window.addEventListener('wheel', handleWheel);
 
             // Cleanup
             return () => {
                 window.removeEventListener('resize', checkIsMobile);
-                window.removeEventListener('wheel', handleWheel);
             };
         }
     }, [projects, loading, window.innerWidth]);
@@ -58,7 +44,7 @@ const ProjectCarousel = ({ projects, loading }) => {
                                 bounce: 0.35
                             }}
                             className="carousel-track">
-                            {projects.concat(projects).map((project, index) => (
+                            {projects.map((project, index) => (
                                 <CardProject
                                     key={index}
                                     data={project?.acf}
@@ -77,7 +63,7 @@ const ProjectCarousel = ({ projects, loading }) => {
                             direction={isMobile ? 'horizontal' : 'vertical'}
                             slidesPerView={'auto'}
                             spaceBetween={isMobile ? 16 : 32}
-                            loop
+                            loop={true}
                             autoplay={{ // Autoplay configuration
                                 delay: 3000, // Delay in milliseconds between slides
                                 disableOnInteraction: false, // Autoplay continues even when user interacts with swiper
