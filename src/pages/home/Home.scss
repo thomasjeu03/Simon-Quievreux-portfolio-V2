@@ -141,6 +141,11 @@
   @media only screen and (max-width: 800px){
     padding-bottom: var(--10m);
   }
+  @media only screen and (max-width: 500px){
+    .right{
+      margin-top: var(--3m);
+    }
+  }
 }
 .ProjectPage{
   display: flex;
@@ -276,6 +281,11 @@
           }
         }
       }
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .left{
+      margin-top: var(--3m);
     }
   }
 }
