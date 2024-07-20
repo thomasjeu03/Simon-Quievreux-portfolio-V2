@@ -197,6 +197,9 @@
       cursor: pointer;
       img{
         max-width: 675px;
+        @media only screen and (max-width: 1920px){
+          max-width: 500px;
+        }
       }
     }
     .videoPreview{
@@ -205,10 +208,10 @@
   }
   @media only screen and (max-width: 1920px){
     .left{
-      max-width: 720px;
+      max-width: 600px;
     }
     .right{
-      max-width: 880px;
+      max-width: 680px;
     }
   }
   @media only screen and (max-width: 900px){
@@ -311,8 +314,8 @@
   height: 100%;
   font-family: var(--text-font) !important;
   @media only screen and (max-width: 1200px){
-    width: 550px !important;
-    min-width: 550px !important;
+    width: 500px !important;
+    min-width: 500px !important;
   }
   @media only screen and (max-width: 1050px){
     width: 470px !important;
