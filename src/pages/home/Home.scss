@@ -200,6 +200,12 @@
         @media only screen and (max-width: 1920px){
           max-width: 500px;
         }
+        @media only screen and (max-width: 1200px){
+          max-width: 360px;
+        }
+        @media only screen and (max-width: 900px){
+          max-width: 500px;
+        }
       }
     }
     .videoPreview{
@@ -212,6 +218,11 @@
     }
     .right{
       max-width: 680px;
+    }
+  }
+  @media only screen and (max-width: 1200px){
+    .left{
+      width: 60%;
     }
   }
   @media only screen and (max-width: 900px){

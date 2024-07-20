@@ -127,7 +127,7 @@ const ProjectPage = ({logo, loadingLogo}) => {
                             type: "spring",
                             bounce: 0.35
                         }}
-                        className='dflexcolumn gap32 w100' style={{justifyContent: 'center', height: '94dvh'}}>
+                        className='dflexcolumn gap16 w100' style={{justifyContent: 'center', height: '94dvh'}}>
                         <div className='dflexrow gapBetween gap8 w100' style={{alignItems: 'flex-start'}}>
                             {logo && (
                                 <Link to="/">
