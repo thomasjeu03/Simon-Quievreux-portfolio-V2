@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
 import ProjectCarousel from "../components/ProjectCarousel.jsx";
 import Xlogo from "../../public/img/xlogo.png";
+import discordLogo from "../../public/img/discordlogo.png";
 import ReactTypingEffect from 'react-typing-effect';
 
 const TemplatePage = ({home, loadingHome}) => {
@@ -68,7 +69,7 @@ const TemplatePage = ({home, loadingHome}) => {
                     </div>
                     <div className="dflexcolumn w100">
                         <h1 className='gradientTitre'>{home?.acf?.title}</h1>
-                        {(home?.acf?.subtitle && home?.acf?.subtitle_2) ? (
+                        {(home?.acf?.subtitle && home?.acf?.subtitle_2 && home?.acf?.subtitle_3) ? (
                             <ReactTypingEffect
                                 speed={50}
                                 eraseSpeed={25}
@@ -76,7 +77,7 @@ const TemplatePage = ({home, loadingHome}) => {
                                 typingDelay={0}
                                 cursor={'_'}
                                 cursorClassName='cursor'
-                                text={[home?.acf?.subtitle, home?.acf?.subtitle_2]}
+                                text={[home?.acf?.subtitle, home?.acf?.subtitle_2, home?.acf?.subtitle_3]}
                                 displayTextRenderer={(text, i) => {
                                     return (
                                         <h2 className='gray-500' key={i}>
@@ -87,11 +88,14 @@ const TemplatePage = ({home, loadingHome}) => {
                             />
                         ):(
                             <>
-                                {(home?.acf?.subtitle && !home?.acf?.subtitle_2) && (
+                                {(home?.acf?.subtitle && !home?.acf?.subtitle_2 && !home?.acf?.subtitle_3) && (
                                     <h2 className='gray-500'>{home?.acf?.subtitle}</h2>
                                 )}
-                                {(!home?.acf?.subtitle && home?.acf?.subtitle_2) && (
+                                {(!home?.acf?.subtitle && home?.acf?.subtitle_2 && !home?.acf?.subtitle_3) && (
                                     <h2 className='gray-500'>{home?.acf?.subtitle_2}</h2>
+                                )}
+                                {(!home?.acf?.subtitle && !home?.acf?.subtitle_2 && home?.acf?.subtitle_3) && (
+                                    <h2 className='gray-500'>{home?.acf?.subtitle_3}</h2>
                                 )}
                             </>
                         )}
@@ -131,16 +135,10 @@ const TemplatePage = ({home, loadingHome}) => {
                             )}
                             {home?.acf?.instagram_url && (
                                 <a href={home?.acf?.instagram_url} target="_blank" rel='noopener'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                         viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" strokeWidth="2"
-                                         strokeLinecap="round"
-                                         strokeLinejoin="round"
-                                         className="lucide lucide-instagram gray-400">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                                    </svg>
+                                    <img src={discordLogo} alt='logo Discord' height={22} style={darkMode ? {
+                                        filter: 'invert(1)',
+                                        opacity: .8
+                                    } : {opacity: .8}}/>
                                 </a>
                             )}
                         </div>

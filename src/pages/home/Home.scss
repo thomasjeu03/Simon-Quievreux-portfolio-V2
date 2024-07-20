@@ -8,7 +8,7 @@
   min-height: 100dvh;
   height: auto;
   .carousel{
-    max-width: 1230px;
+    max-width: 1240px;
     height: 100%;
     width: 66%;
     display: flex;
@@ -201,6 +201,14 @@
     }
     .videoPreview{
       width: fit-content;
+    }
+  }
+  @media only screen and (max-width: 1920px){
+    .left{
+      max-width: 720px;
+    }
+    .right{
+      max-width: 880px;
     }
   }
   @media only screen and (max-width: 900px){
