@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: var(--8m);
+  gap: var(--4m);
   width: 100%;
   min-height: 100dvh;
   height: auto;
@@ -53,7 +53,7 @@
       max-width: 500px;
     }
   }
-  @media only screen and (max-width: 1350px){
+  @media only screen and (max-width: 1500px){
     gap: 0;
     .carousel{
       max-width: auto;
@@ -65,10 +65,9 @@
       }
     }
     .right{
-      max-width: none;
+      max-width: 500px;
       width: 40%;
       gap: var(--3m);
-      padding: var(--3m);
     }
   }
   @media only screen and (max-width: 1100px){
@@ -144,15 +143,11 @@
       width: 100%;
       max-width: 650px;
       height: auto;
+      margin-top: var(--3m);
     }
   }
   @media only screen and (max-width: 800px){
     padding-bottom: var(--10m);
-  }
-  @media only screen and (max-width: 500px){
-    .right{
-      margin-top: var(--3m);
-    }
   }
 }
 .ProjectPage{
@@ -177,6 +172,7 @@
     justify-content: flex-start;
     gap: var(--4m);
     padding: var(--4m);
+    padding-block-end: 0;
   }
   .right{
     max-width: 1240px;
@@ -231,13 +227,13 @@
     justify-content: flex-start;
     padding-bottom: var(--10m);
     .left{
-      max-width: 100%;
+      max-width: 650px;
       min-height: auto;
       width: 100%;
       position: relative;
       top: auto;
       gap: var(--3m);
-      padding: var(--3m);
+      margin-top: var(--3m);
       &>.dflexcolumn{
         justify-content: flex-start !important;
         height: auto !important;
@@ -648,5 +644,17 @@
     padding: var(--05m) var(--1m);
     white-space: nowrap;
     text-align: left;
+  }
+  @media only screen and (max-width: 1100px){
+    h6{
+      font-size: 16px !important;
+    }
+  }
+}
+
+.textContainerProjet{
+  gap: 24px;
+  @media only screen and (max-width: 1920px){
+    gap: 16px;
   }
 }
