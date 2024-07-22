@@ -109,7 +109,7 @@ const TemplatePage = ({home, loadingHome}) => {
                                 <a className='CTA'
                                    href={`mailto:${home?.acf?.email}`}>
                                     <Send className='white' size={iconSize}/>
-                                    Contact me
+                                    {home?.acf?.contact_button_text || "Contact me"}
                                 </a>
                             )}
                             {home?.acf?.resume && (
@@ -118,7 +118,7 @@ const TemplatePage = ({home, loadingHome}) => {
                                    className='CTA CTA--pink'
                                    href={home?.acf?.resume?.url}>
                                     <Download className='white' size={iconSize}/>
-                                    My resume
+                                    {home?.acf?.resume_button_text || "My resume"}
                                 </a>
                             )}
                         </div>
